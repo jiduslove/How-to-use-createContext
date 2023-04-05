@@ -1,5 +1,20 @@
+import { createContext, useState } from "react";
+import Child from "./components/Child";
+import ChildFriend from "./components/ChildFriend";
+
+export const AppContext = createContext();
+
 function App() {
-  return <div className="bg-red-100">Hello, React</div>;
+  const [gift, setGift] = useState(10000000);
+
+  return (
+    <AppContext.Provider value={{ gift, setGift }}>
+      <div className="bg-red-100">
+        <Child />
+        <ChildFriend />
+      </div>
+    </AppContext.Provider>
+  );
 }
 
 export default App;
